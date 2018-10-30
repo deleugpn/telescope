@@ -136,10 +136,6 @@ class TelescopeServiceProvider extends ServiceProvider
             EntriesRepository::class, DatabaseEntriesRepository::class
         );
 
-        $this->app->singleton(
-            PrunableRepository::class, DatabaseEntriesRepository::class
-        );
-
         $this->app->when(DatabaseEntriesRepository::class)
             ->needs('$connection')
             ->give(config('telescope.storage.database.connection'));
